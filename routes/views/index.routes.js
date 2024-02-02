@@ -9,9 +9,7 @@ router.get("/", async (req, res) => {
     raw: true,
   });
   const categories = await Category.findAll({ raw: true });
-  res.send(
-    res.renderComponent(Main, { title: "Express", categories, articles })
-  );
+  res.send(res.renderComponent(Main, { title: "Avito", categories, articles }));
 });
 
 module.exports = router;

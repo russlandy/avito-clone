@@ -3,9 +3,8 @@ const { Article, Category } = require("../../db/models");
 
 const Items = require("../../components/pages/Items");
 
-router.get("/", async (req, res) => {
-  const id = req.query.category;
-  // console.log("id+++++", id);
+router.get("/:id", async (req, res) => {
+  const { id } = req.params;
   const articles = await Article.findAll({
     raw: true,
     where: {
@@ -16,9 +15,6 @@ router.get("/", async (req, res) => {
     },
   });
   const titleRaw = await Category.findOne({ where: { id } });
-  // console.log(articles.categoryID);
-  // const { title } = titleRaw;
-  console.log("titleRAW ======>", titleRaw);
   res.send(res.renderComponent(Items, { title: titleRaw.title, articles }));
 });
 

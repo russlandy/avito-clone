@@ -2,8 +2,9 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class Article extends Model {
-    static associate({ Category }) {
+    static associate({ Category, User }) {
       Article.belongsTo(Category, { foreignKey: "categoryID" });
+      Article.belongsTo(User, { foreignKey: "userID" });
     }
   }
   Article.init(
@@ -17,6 +18,13 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         references: {
           model: "Categories",
+        },
+      },
+      userID: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+          model: "Users",
         },
       },
     },

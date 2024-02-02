@@ -110,6 +110,7 @@ module.exports = {
 
     const arrObj = arr.map((el) => ({
       ...el,
+      userID: 1,
       createdAt: new Date(),
       updatedAt: new Date(),
     }));

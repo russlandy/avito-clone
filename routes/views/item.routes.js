@@ -6,7 +6,7 @@ const Item = require("../../components/pages/Item");
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
   const article = await Article.findOne({ where: { id: +id } });
-  console.log(article);
+  // console.log(article);
   res.send(res.renderComponent(Item, { title: article.title, article }));
 });
 

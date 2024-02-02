@@ -1,6 +1,22 @@
 const express = require("express");
-const morgan = require("morgan");
+// const morgan = require("morgan");
+const session = require("express-session");
+const FileStore = require("session-file-store")(session);
 const ssr = require("../middleware/ssr");
+
+const { getUser, resLocals } = require("../middleware/auth");
+
+const sessionConfig = {
+  store: new FileStore(),
+  name: "avito",
+  secret: process.env.SESSION_SECRET ?? "secret",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 12,
+    httpOnly: true,
+  },
+};
 
 const serverConfig = (app) => {
   // app.use(morgan("dev"));
@@ -8,6 +24,7 @@ const serverConfig = (app) => {
   app.use(express.urlencoded({ extended: true }));
   app.use(express.static("public"));
   app.use(ssr);
+  app.use(session(sessionConfig));
 };
 
 module.exports = serverConfig;

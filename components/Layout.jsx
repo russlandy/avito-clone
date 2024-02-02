@@ -1,6 +1,6 @@
 const React = require("react");
 
-module.exports = function Layout({ children, title }) {
+module.exports = function Layout({ children, title, auth }) {
   return (
     <html lang="en">
       <head>
@@ -13,22 +13,23 @@ module.exports = function Layout({ children, title }) {
           <div className="logo">
             <a href="/">Avito</a>
           </div>
-          <nav className="nav">
-            <ul className="nav_items">
+          {auth ? (
+            <>
+              <li>{auth}</li>
               <li>
-                <a href="/categories/1">Квартиры</a>
+                <a href="api/auth/logout">Выйти</a>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <a href="/auth">Войти</a>
               </li>
               <li>
-                <a href="/categories/2">Авто</a>
+                <a href="/register">Регистрация</a>
               </li>
-              <li>
-                <a href="/categories/3">Книги</a>
-              </li>
-              <li>
-                <a href="/categories/4">Техника</a>
-              </li>
-            </ul>
-          </nav>
+            </>
+          )}
         </header>
         {children}
       </body>
