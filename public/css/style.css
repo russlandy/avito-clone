@@ -1,6 +1,13 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1440px;
 }
 
 a {
@@ -9,4 +16,60 @@ a {
 
 .item_img {
   width: 200px;
+}
+.item_wrapper {
+  width: 200px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+input {
+  width: 200px;
+  height: 20px;
+  border-radius: 10px;
+}
+button {
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+.header_main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.navbar {
+  display: flex;
+}
+
+li {
+  list-style: none;
+  margin: 0 20px;
+}
+
+.auth {
+  display: flex;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 5px;
+}
+
+.form_wrapper {
+  max-width: 320px;
+  margin: 0 auto;
 }

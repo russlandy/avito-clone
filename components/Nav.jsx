@@ -1,8 +1,8 @@
 const React = require("react");
-module.exports = function Nav({ categories }) {
+module.exports = function Nav({ categories, auth }) {
   return (
-    <nav>
-      <ul>
+    <div className="header_main">
+      <nav className="navbar">
         {categories.map((category) => {
           return (
             <li key={category.id}>
@@ -10,7 +10,26 @@ module.exports = function Nav({ categories }) {
             </li>
           );
         })}
-      </ul>
-    </nav>
+      </nav>
+      <div className="auth">
+        {auth ? (
+          <>
+            <li>{auth}</li>
+            <li>
+              <a href="api/auth/logout">Выйти</a>
+            </li>
+          </>
+        ) : (
+          <>
+            <li>
+              <a href="/auth/login">Войти</a>
+            </li>
+            <li>
+              <a href="/auth/regis">Регистрация</a>
+            </li>
+          </>
+        )}
+      </div>
+    </div>
   );
 };

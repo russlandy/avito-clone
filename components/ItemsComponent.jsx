@@ -8,7 +8,7 @@ function Items({ articles = [] }) {
           <div key={article.id}>
             <div className="item_title">Название: {article.title}</div>
             <div className="item_price">Цена: {article.price}</div>
-            <div>
+            <div className="item_wrapper">
               <a href={`categories/item/${article.id}`}>
                 <img
                   className="item_img"
